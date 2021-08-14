@@ -1,0 +1,16 @@
+# To add a new line or not
+add_newline = false
+
+# [line_break]
+# disabled = true
+
+
+# Use custom format
+format = """
+[┌───────────────────>](bold green)
+[│](bold green)$directory$rust$package
+[└─>](bold green) """
+
+
+[package]
+disabled = true
