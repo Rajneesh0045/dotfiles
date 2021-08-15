@@ -55,7 +55,7 @@ font-4 = cera pro medium:size=12;0
 
 modules-left = powermenu date bspwm
 modules-center = workspaces
-modules-right = wlan alsa2 memory cpu battery
+modules-right = wlan alsa2 backlight-acpi pavolume memory cpu battery
 
 tray-position = right
 tray-padding = 2
@@ -155,25 +155,30 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
+format = <label>
+label = "  %percentage%%"
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+; if bar to be used
+;bar-width = 5
+;bar-indicator = ""
+;bar-indicator-foreground = ${colors.background}
+;bar-indicator-font = 2
+;bar-fill = ""
+;bar-fill-font = 2
+;bar-fill-foreground = ${colors.background}
+;bar-empty = ""
+;bar-empty-font = 2
+;bar-empty-foreground = ${colors.background}
 
 ;;-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = amdgpu_bl0
+format-background = ${colors.magenta}
+format-foreground = ${colors.background}
+format-padding = 2
+format-font = 2
 
 ;;-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 [module/cpu]
@@ -398,6 +403,20 @@ label-active-foreground = ${colors.red}
 label-urgent-foreground = ${colors.alert}
 label-occupied-foreground = ${colors.yellow}
 
+;;-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = ${colors.background}
+format-background = ${colors.blue}
+format-font = 2
+format-padding = 2
 ;;-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 ;--------------------------------------------
