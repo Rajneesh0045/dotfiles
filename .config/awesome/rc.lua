@@ -419,7 +419,11 @@ globalkeys = gears.table.join(
     
     -- Browser
     awful.key({ modkey }, "b", function() awful.util.spawn(mybrowser) end,
-              {description = "launch browser ", group = "launcher"})
+              {description = "launch browser ", group = "launcher"}),
+    
+    -- Shutdown
+    awful.key({ modkey, "Control" }, "q", function() awful.util.spawn('/home/rajneesh/prompt.sh "Are you sure to shutdown" "shutdown -h now"') end,
+              {description = "shutdown", group = "System"})
 )
 
 clientkeys = gears.table.join(
