@@ -34,16 +34,14 @@ fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #f00
+;line-size = 2
+;line-color = #f00
 
 border-size = 0
 border-color = #00000000
 
 padding-left = 0
 padding-right = 0
-
 
 module-margin-left = 1
 module-margin-right = 1
@@ -175,6 +173,8 @@ label = "  %percentage%%"
 inherit = module/xbacklight
 type = internal/backlight
 card = amdgpu_bl0
+use-actual-brightness = true
+enable-scroll = true
 format-background = ${colors.magenta}
 format-foreground = ${colors.background}
 format-padding = 2
@@ -373,9 +373,9 @@ label-open = "    "
 label-close = "    "
 
 menu-0-0 = " Restart"
-menu-0-0-exec = reboot
+menu-0-0-exec = ~/prompt.sh "Are you sure ?" "reboot"
 menu-0-1 = " Shutdown"
-menu-0-1-exec = shutdown -h now
+menu-0-1-exec = ~/prompt.sh "Are you sure ?" "shutdown -h now"
 
 ;;-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 [module/workspaces]
@@ -387,7 +387,8 @@ format-padding = 0.5
 icon-default =
 
 format = <label-state>
-format-background = ${colors.background-alt}
+format-background = ${colors.background}
+
 label-active =
 label-occupied =
 label-urgent =
