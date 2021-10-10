@@ -85,9 +85,10 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("rofi -show run"), desc="Spawn rofi"),
-    Key([mod], "p", lazy.spawn("rofi -show run"), desc="Spawn rofi"),
+    Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "q", lazy.spawn('/home/rajneesh/prompt.sh "Are you sure to shutdown" "shutdown -h now"') , desc="Shutdown Machine"),
+    Key([mod], "r", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn rofi"),
+    Key([mod], "p", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn rofi"),
 ]
 
 groups = [Group(i) for i in "12345"]
